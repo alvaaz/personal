@@ -70,14 +70,21 @@ body {
   @apply .flex .flex-col .flex-wrap .items-center .py-16;
 }
 
-
-.circle {
-  width: 1200px;
-  height: 1200px;
-  top: -600px;
-  right: -600px;
+body {
+  @apply .overflow-x-hidden;
 }
 
+.circle {
+  width: 90vw;
+  height: 90vw;
+  top: -45vw;
+  right: -45vw;
+}
 main {
-  top: -16vh;
+  top: 0;
+}
+@media screen and (min-width: 40em){
+  main {
+    top: -16vh;
+  }
 }

@@ -6,10 +6,16 @@ const Card = ({
 	src = 'https://tailwindcss.com/img/card-top.jpg',
 }) => (
 	<div className="relative">
-		<img className="w-full h-full bg-cover" src={src} alt="" />
-		<div className="absolute" style={{ top: '1.5rem', left: '1.5rem' }}>
+		<img
+			className="w-full bg-cover h-64 sm:h-full object-cover"
+			src={src}
+			alt=""
+		/>
+		<div className="absolute inset-6">
 			<p className="text-white text-2xl font-semibold">Categoría</p>
-			<h2 className="font-bold text-5xl text-white">{title}</h2>
+			<h2 className="font-bold text-2xl sm:text-6xl text-white">
+				{title}
+			</h2>
 		</div>
 	</div>
 )

@@ -11,13 +11,8 @@ import PropTypes from 'prop-types'
 const Main = ({ type, children }) => {
 	return (
 		<>
-			<div className="max-w-6xl mx-auto my-0">
-				<main className={type ? 'relative': ''}>{children}</main>
-				<footer>
-					© {new Date().getFullYear()}, Built with
-					{` `}
-					<a href="https://www.gatsbyjs.org">Gatsby</a>
-				</footer>
+			<div className="container mx-auto py-6 my-0 px-4 sm:px-0">
+				<main className={type ? 'relative' : ''}>{children}</main>
 			</div>
 		</>
 	)

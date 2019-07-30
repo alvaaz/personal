@@ -10,6 +10,9 @@ module.exports = {
           default: '#ae3433',
           dark: '#202e78',
         }
+      },
+      inset: {
+        '6': '1.5rem',
       }
     },
 
