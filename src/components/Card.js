@@ -1,11 +1,7 @@
 import React from 'react'
 
-const Card = ({
-	title = 'Mount Raineer',
-	elevation = 4000,
-	src = 'https://tailwindcss.com/img/card-top.jpg',
-}) => (
-	<div className="relative">
+const Card = ({ title, src }) => (
+	<div className="relative mb-20 sm:mb-64">
 		<img
 			className="w-full bg-cover h-64 sm:h-full object-cover"
 			src={src}

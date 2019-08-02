@@ -20,7 +20,7 @@ const Image = () => {
 				relativePath: { eq: "personal.jpg" }
 			) {
 				childImageSharp {
-					fluid(maxWidth: 1200, maxHeight: 600) {
+					fluid(maxWidth: 600, maxHeight: 300) {
 						...GatsbyImageSharpFluid
 					}
 				}
@@ -28,7 +28,7 @@ const Image = () => {
 		}
 	`)
 
-	return <Img objectFit="cover" fluid={data.placeholderImage.childImageSharp.fluid} />
+	return <Img objectFit="cover" objectPosition="30% 30%" fluid={data.placeholderImage.childImageSharp.fluid} />
 }
 
 export default Image
