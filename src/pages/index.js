@@ -23,11 +23,12 @@ const IndexPage = () => (
 					Javascript and React.
 				</p>
 				<a
-					href="#"
+					href='https://media.graphcms.com/Iumra2hpR5KQwOqAMwv4'
 					className="bg-red hover:bg-red-dark text-md text-white font-bold py-4 px-4 tracking-widest uppercase"
 				>
 					Download My Resume
 				</a>
+
 			</div>
 		</Header>
 		<Main type={true}>
@@ -38,6 +39,7 @@ const IndexPage = () => (
 							projects {
 								title
 								date
+								urlFile
 								image {
 									url
 								}
@@ -54,14 +56,15 @@ const IndexPage = () => (
 							title={d.title}
 							src={d.image ? d.image.url : undefined}
 							key={i}
+							url={d.urlFile}
 						/>
 					))
 				}}
 			/>
-			<h1 className="text-4xl sm:text-6xl font-bold mb-10">
+			{/* <h1 className="text-4xl sm:text-6xl font-bold mb-10">
 				My classes.
 			</h1>
-			<Class />
+			<Class /> */}
 		</Main>
 		<Footer />
 	</>

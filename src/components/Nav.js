@@ -2,7 +2,6 @@ import { Link } from 'gatsby'
 
 import PropTypes from 'prop-types'
 import React from 'react'
-import Image from './Image'
 
 const Nav = ({ siteTitle }) => (
 	<>
@@ -13,18 +12,18 @@ const Nav = ({ siteTitle }) => (
 				</Link>
 			</div>
 			<div className="lg:flex lg:items-center lg:w-auto">
-				<Link
+				{/* <Link
 					to="/about/"
 					className="no-underline text-xl font-semibold text-white pb-1 mt-4 border-b-2 border-solid border-transparent hover:border-white mr-4"
 				>
 					about
 				</Link>
 				<Link
-					to="#"
+					to="/"
 					className="no-underline text-xl font-semibold text-white pb-1 mt-4 border-b-2 border-solid border-transparent hover:border-white"
 				>
 					contact
-				</Link>
+				</Link> */}
 			</div>
 		</nav>
 	</>

@@ -4,11 +4,12 @@ module.exports = {
 		titleAlt: `Álvaro.`,
 		description: `Welcome! Thanks for your interest in my work. I am Álvaro Göede Rivera, a DUOC UC graphic designer, amateur computer programmer and musician`,
 		author: `@alvaaz`,
+		email: `alvaro@goede.cl`,
 		social: {
 			dribbble: `alvaaz`,
 			behance: `alvaaz`,
 			instagram: `alvaaz`,
-			email: `alvaro@goede.cl`,
+			github: `alvaaz`,
 		},
 	},
 	plugins: [

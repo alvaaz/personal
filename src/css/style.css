@@ -73,6 +73,7 @@ body {
 }
 
 body {
+  overflow-x: hidden;
   @apply .overflow-x-hidden;
 }
 
@@ -80,7 +81,7 @@ body {
   width: 90vw;
   height: 90vw;
   top: -45vw;
-  right: -45vw;
+  right: -55vw;
 }
 main {
   top: 0;
@@ -89,6 +90,12 @@ main {
 @media (min-width: 640px) {
   main {
     top: 0vh;
+  }
+  .circle {
+    width: 90vw;
+    height: 90vw;
+    top: -45vw;
+    right: -45vw;
   }
 }
 
