@@ -20,7 +20,7 @@ const Footer = () => {
 	const { social, email } = data.site.siteMetadata
 	return (
 		<>
-			<div className="container mx-auto py-6 px-4 sm:px-0">
+			<div className="container mx-auto pt-40 py-6 px-4 sm:px-0">
 				<h1 className="text-4xl sm:text-6xl font-bold leading-none mb-32 w-9/12 sm:w-6/12">
 					Let’s work together on your next project.
 				</h1>

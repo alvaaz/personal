@@ -1,12 +1,8 @@
 import React from 'react'
 
 import Header from '../components/Header'
-import { StaticQuery, graphql } from 'gatsby'
 import SEO from '../components/seo'
-import Card from '../components/Card'
-import Main from '../components/Main'
 import Footer from '../components/Footer'
-import Class from '../components/Class'
 
 const IndexPage = () => (
 	<>
@@ -26,46 +22,10 @@ const IndexPage = () => (
 					href='https://media.graphcms.com/Iumra2hpR5KQwOqAMwv4'
 					className="bg-red hover:bg-red-dark text-md text-white font-bold py-4 px-4 tracking-widest uppercase"
 				>
-					Download My Resume
+					Download My letter presentation
 				</a>
-
 			</div>
 		</Header>
-		<Main type={true}>
-			<StaticQuery
-				query={graphql`
-					query ProjectsQuery {
-						gcms {
-							projects {
-								title
-								date
-								urlFile
-								image {
-									url
-								}
-							}
-						}
-					}
-				`}
-				render={data => {
-					if (!data.gcms) {
-						return <p>Cargando...</p>
-					}
-					return data.gcms.projects.map((d, i) => (
-						<Card
-							title={d.title}
-							src={d.image ? d.image.url : undefined}
-							key={i}
-							url={d.urlFile}
-						/>
-					))
-				}}
-			/>
-			{/* <h1 className="text-4xl sm:text-6xl font-bold mb-10">
-				My classes.
-			</h1>
-			<Class /> */}
-		</Main>
 		<Footer />
 	</>
 )

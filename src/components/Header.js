@@ -23,7 +23,7 @@ const Header = ({ children }) => {
 
 	return (
 		<>
-			<header className="bg-red-lighter h-auto pb-20 lg:h-screen lg:pb-0">
+			<header className="bg-red-lighter h-screen pb-20 lg:h-screen lg:pb-0">
 				<div className="absolute right-0 top-0 bg-red rounded-full circle"></div>
 				<Nav siteTitle={data.site.siteMetadata.titleAlt}></Nav>
 				{children}
