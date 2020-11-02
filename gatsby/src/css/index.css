@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply .overflow-x-hidden;
+  position: relative;
+}
+
+body {
+  @apply .font-sans;
+  position: relative;
+}
+
+.slider {
+  @apply .flex .flex-col .flex-wrap .items-center .py-16;
+}
+
+.circle {
+  width: 90vw;
+  height: 90vw;
+  top: -45vw;
+  right: -55vw;
+  @apply .absolute .right-0 .top-0 .bg-red .rounded-full;
+}
+
+@media (min-width: 640px) {
+  .circle {
+    width: 70vw;
+    height: 70vw;
+    top: -35vw;
+    right: -52vw;
+  }
+}
+
+.button-primary {
+  @apply .bg-red .text-white .font-bold .py-4 .px-4 .tracking-widest .uppercase .col-start-2;
+  width: max-content;
+  &:hover {
+    @apply .bg-red-dark;
+  }
+}
+
+.articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 4rem;
+  grid-auto-rows: 500px auto auto;
+}
+
+.article {
+  display: grid;
+  @supports not (grid-template-rows: subgrid) {
+    --rows: 500px auto auto;
+  }
+  grid-template-rows: var(--rows, subgrid);
+  grid-row: span 3;
+  gap: 1rem;
+  &__title {
+    @apply .font-bold .text-5xl .border-b-2 .border-solid .border-transparent .inline-block;
+  }
+  &:hover {
+    .article__title {
+      @apply .border-red;
+    }
+  }
+}
+
+.quote {
+  &:before {
+    content: '';
+    width: 40vw;
+    height: 40vw;
+    z-index: -1;
+    right: -6vw;
+    top: -12vw;
+    @apply .absolute .bg-red .rounded-full;
+  }
+}
+
+.master {
+  .subgrid {
+    grid-template-columns: subgrid;
+    display: grid;
+  }
+}
