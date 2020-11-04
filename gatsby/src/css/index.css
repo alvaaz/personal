@@ -17,19 +17,37 @@ body {
 }
 
 .circle {
-  width: 90vw;
-  height: 90vw;
-  top: -45vw;
-  right: -55vw;
-  @apply .absolute .right-0 .top-0 .bg-red .rounded-full;
+  width: 150vw;
+  height: 150vw;
+  top: -80vw;
+  right: -110vw;
+  @apply .absolute .bg-red .rounded-full;
 }
 
 @media (min-width: 640px) {
   .circle {
-    width: 70vw;
-    height: 70vw;
-    top: -35vw;
-    right: -52vw;
+    width: 90vw;
+    height: 90vw;
+    top: -45vw;
+    right: -40vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .circle {
+    width: 80vw;
+    height: 80vw;
+    top: -45vw;
+    right: -40vw;
+  }
+}
+
+@media (min-width: 1280px) {
+  .circle {
+    width: 80vw;
+    height: 80vw;
+    top: -45vw;
+    right: -45vw;
   }
 }
 
@@ -44,20 +62,23 @@ body {
 .articles {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 4rem;
-  grid-auto-rows: 500px auto auto;
+  column-gap: 4rem;
+  grid-auto-rows: 300px auto auto;
+  margin-bottom: 8rem;
 }
 
 .article {
   display: grid;
   @supports not (grid-template-rows: subgrid) {
-    --rows: 500px auto auto;
+    --rows: 300px auto auto;
   }
   grid-template-rows: var(--rows, subgrid);
   grid-row: span 3;
-  gap: 1rem;
   &__title {
-    @apply .font-bold .text-5xl .border-b-2 .border-solid .border-transparent .inline-block;
+    @apply .font-bold .text-5xl .border-b-2 .border-solid .border-transparent .inline-block .mb-16;
+  }
+  &__poster {
+    @apply .mb-4;
   }
   &:hover {
     .article__title {
