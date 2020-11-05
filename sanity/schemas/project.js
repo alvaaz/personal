@@ -4,6 +4,12 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'categories',
+      title: 'Project Categories',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'category' }] }]
+    },
+    {
       name: 'title',
       title: 'Project Title',
       type: 'string',
@@ -12,14 +18,28 @@ export default {
     {
       name: 'excerpt',
       title: 'Project Excerpt',
-      type: 'string',
+      type: 'text',
       description: 'Excerpt of the project'
     },
     {
-      name: 'categories',
-      title: 'Project Categories',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'category' }] }]
+      name: 'table',
+      title: 'Table',
+      type: 'table',
+    },
+    {
+      name: 'section1',
+      title: 'Section 1',
+      type: 'section1'
+    },
+    {
+      name: 'section2',
+      title: 'Section 2',
+      type: 'section2'
+    },
+    {
+      name: 'section3',
+      title: 'Section 3',
+      type: 'section3'
     },
     {
       title: 'Featured project',
@@ -39,12 +59,6 @@ export default {
         source: 'name',
         maxLength: 100
       }
-    },
-     {
-      name: 'image',
-      title: 'Images',
-      type: 'array',
-      of: [{type: 'image'}]
-    },
+    }
   ]
 }

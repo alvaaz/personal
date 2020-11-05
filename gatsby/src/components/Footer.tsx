@@ -3,7 +3,7 @@ import * as React from 'react'
 const Footer = () => {
   return (
     <footer>
-      <div className="px-12 sm:px-64">
+      <div className="px-12 sm:px-16 md:px-24 lg:px-32 xl:px-64">
         <h1 className="text-4xl sm:text-6xl font-bold leading-none mb-32 w-9/12 sm:w-6/12">
           Let’s work together on your next project.
         </h1>

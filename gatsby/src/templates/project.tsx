@@ -1,13 +1,55 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 // import { ProjectProps } from '../types'
+import Img, { FluidObject } from 'gatsby-image'
 
 type ProjectProps = {
   project: {
     title: string
+    excerpt: string
     categories: {
       name: string
     }[]
+    table: {
+      contributors: string
+      duration: string
+      role: string
+      year: number
+    }
+    section1: {
+      content: string
+      title: string
+      image1: {
+        asset: {
+          fluid: {
+            src: string
+          }
+        }
+      }
+      image2: {
+        asset: {
+          fluid: {
+            src: string
+          }
+        }
+      }
+    }
+    section2: {
+      content: string
+      title: string
+      quote: string
+    }
+    section3: {
+      content: string
+      title: string
+      image1: {
+        asset: {
+          fluid: {
+            src: string
+          }
+        }
+      }
+    }
     slug: {
       current: string
     }
@@ -25,15 +67,13 @@ export default function SingleProjectPage({ data }: { data: ProjectProps }) {
   const { project } = data
   return (
     <>
-      <div className="grid gap-x-8 pb-24 px-12 sm:px-64 grid-cols-8 sm:grid-cols-12">
+      <div className="grid gap-x-8 pb-24 px-12 sm:px-24 md:32 lg:48 xl:px-64 grid-cols-8 sm:grid-cols-12">
         <p className="font-extrabold text-xl uppercase tracking-wider text-red col-start-1 col-end-9 sm:col-end-8">
           {project.categories.map((category) => category.name).join(' / ')}
         </p>
         <h2 className="article__title col-start-1 col-end-7 mb-8">{project.title}</h2>
         <p className="col-start-2 col-end-9 font-medium leading-tight text-3xl mb-8">
-          I started Jellypepper in late 2017. Since then, we’ve had the privilege of working with
-          massive companies and disruptive early-stage startups in industries like self-driving
-          cars, sustainable energy financing, biotechnology, artificial intelligence and drones.
+          {project.excerpt}
         </p>
         <table className="table-auto col-start-2 col-end-9 text-red text-left">
           <thead>
@@ -55,74 +95,68 @@ export default function SingleProjectPage({ data }: { data: ProjectProps }) {
           <tbody>
             <tr>
               <td className="border-solid border border-red px-4 py-2 tracking-wider text-xl">
-                Role
+                {project.table.role}
               </td>
               <td className="border-solid border border-red px-4 py-2 tracking-wider text-xl">
-                Contributors
+                {project.table.contributors}
               </td>
               <td className="border-solid border border-red px-4 py-2 tracking-wider text-xl">
-                Year
+                {project.table.year}
               </td>
               <td className="border-solid border border-red px-4 py-2 tracking-wider text-xl">
-                Duration
+                {project.table.duration}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
       <div
-        className="bg-red-lighter grid gap-8 grid-cols-8 sm:grid-cols-12 mx-auto px-12 sm:px-64 pt-20"
-        style={{ maxHeight: '500px', marginBottom: '500px', gridTemplateRows: 'auto auto 300px' }}
+        className="bg-red-lighter grid gap-8 grid-cols-8 sm:grid-cols-12 mx-auto px-12 sm:px-24 md:32 lg:48 xl:px-64 pt-20"
+        style={{ maxHeight: '500px', marginBottom: '500px' }}
       >
         <p className="font-extrabold text-xl uppercase tracking-wider col-start-1 col-end-9 sm:col-end-5">
-          Discovering a problem
+          {project.section1.title}
         </p>
         <p className="col-start-2 col-end-9 leading-tight text-2xl mb-8">
-          I started Jellypepper in late 2017. Since then, we’ve had the privilege of working with
-          massive companies and disruptive early-stage startups in industries like self-driving
-          cars, sustainable energy financing, biotechnology, artificial intelligence and drones.
+          {project.section1.content}
         </p>
-        <img
+        <Img
           className="col-start-2 col-end-9 sm:col-end-6"
-          src="https://cdn.stocksnap.io/img-thumbs/960w/autumn-trees_WV0YTVMU7P.jpg"
+          fluid={project.section1.image1.asset.fluid as FluidObject}
+          alt={project.section1.title}
         />
-        <img
+        <Img
           className="col-start-2 col-end-9 sm:col-start-6 sm:col-end-13"
-          src="https://cdn.stocksnap.io/img-thumbs/960w/autumn-trees_WV0YTVMU7P.jpg"
+          fluid={project.section1.image2.asset.fluid as FluidObject}
+          alt={project.section1.title}
         />
       </div>
       <div
-        className="grid gap-8 grid-cols-12 mx-auto px-64 master"
+        className="grid gap-8 grid-cols-8 sm:grid-cols-12 mx-auto px-12 sm:px-24 md:32 lg:48 xl:px-64 master"
         style={{ marginBottom: '300px' }}
       >
-        <p className="font-medium text-4xl col-start-2 col-end-6 relative text-white quote">
-          “Florian helped us launch our new landingpage with a beautiful design and clear branding
-          guidance. We couldn't be happier with his work and dedication.”
+        <p className="font-medium text-2xl sm:text-4xl col-start-2 col-end-9 sm:col-end-6 relative text-white quote">
+          {project.section2.quote}
         </p>
 
         <div className="col-start-7 col-end-12 mb-8 subgrid">
           <p className="font-extrabold text-xl uppercase tracking-wider col-start-1 col-end-5">
-            Challenge
+            {project.section2.title}
           </p>
-          <p className="leading-tight text-2xl col-start-2 col-end-5">
-            I started Jellypepper in late 2017. Since then, we’ve had the privilege of working with
-            massive companies and disruptive early-stage startups in industries like self-driving
-            cars, sustainable energy financing, biotechnology, artificial intelligence and drones.
-          </p>
+          <p className="leading-tight text-2xl col-start-2 col-end-5">{project.section2.content}</p>
         </div>
       </div>
       <div className="grid gap-8 pb-24 px-12 sm:px-64 grid-cols-8 sm:grid-cols-12">
         <p className="font-extrabold text-xl uppercase tracking-wider col-start-1 col-end-9 sm:col-end-5">
-          Conclusion
+          {project.section3.title}
         </p>
         <p className="col-start-2 col-end-9 sm:col-end-8 leading-tight text-2xl mb-8">
-          I started Jellypepper in late 2017. Since then, we’ve had the privilege of working with
-          massive companies and disruptive early-stage startups in industries like self-driving
-          cars, sustainable energy financing, biotechnology, artificial intelligence and drones.
+          {project.section3.content}
         </p>
-        <img
-          className="col-start-2 col-end-9 sm:col-start-8 sm:col-end-12"
-          src="https://cdn.stocksnap.io/img-thumbs/960w/autumn-trees_WV0YTVMU7P.jpg"
+        <Img
+          className="col-start-2 col-end-9 sm:col-start-6 sm:col-end-13"
+          fluid={project.section3.image1.asset.fluid as FluidObject}
+          alt={project.section3.title}
         />
       </div>
     </>
@@ -133,8 +167,49 @@ export const query = graphql`
   query($slug: String!) {
     project: sanityProject(slug: { current: { eq: $slug } }) {
       title
+      excerpt
       categories {
         name
+      }
+      table {
+        contributors
+        duration
+        role
+        year
+      }
+      section1 {
+        content
+        title
+        image1 {
+          asset {
+            fluid(maxWidth: 400) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+        image2 {
+          asset {
+            fluid(maxWidth: 400) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
+      section2 {
+        quote
+        title
+        content
+      }
+      section3 {
+        title
+        content
+        image1 {
+          asset {
+            fluid(maxWidth: 400) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
       }
     }
   }

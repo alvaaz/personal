@@ -24,12 +24,30 @@ body {
   @apply .absolute .bg-red .rounded-full;
 }
 
+.quote {
+  &:before {
+    content: '';
+    width: 90vw;
+    height: 90vw;
+    z-index: -1;
+    right: -6vw;
+    top: -12vw;
+    @apply .absolute .bg-red .rounded-full;
+  }
+}
+
 @media (min-width: 640px) {
   .circle {
     width: 90vw;
     height: 90vw;
     top: -45vw;
     right: -40vw;
+  }
+  .quote {
+    &:before {
+      width: 40vw;
+      height: 40vw;
+    }
   }
 }
 
@@ -84,18 +102,6 @@ body {
     .article__title {
       @apply .border-red;
     }
-  }
-}
-
-.quote {
-  &:before {
-    content: '';
-    width: 40vw;
-    height: 40vw;
-    z-index: -1;
-    right: -6vw;
-    top: -12vw;
-    @apply .absolute .bg-red .rounded-full;
   }
 }
 
