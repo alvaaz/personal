@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Img, { FluidObject } from 'gatsby-image'
 import { ThemeContext } from '../components/ThemeProvider'
+import SEO from '../components/SEO'
 
 type ProjectProps = {
   project: {
@@ -73,6 +74,7 @@ export default function SingleProjectPage({ data }: { data: ProjectProps }) {
   }
   return (
     <>
+      <SEO title={project.title} />
       <div className="grid gap-x-8 pb-24 px-8 sm:px-16 md:px-24 lg:px-32 xl:px-64 grid-cols-8 sm:grid-cols-12">
         <p className="font-extrabold text-xl uppercase tracking-wider text-red col-start-1 col-end-9 sm:col-end-8">
           {project.categories.map((category) => category.name).join(' / ')}
