@@ -1,13 +1,14 @@
 {
-  "name": "using-typescript",
+  "name": "goede.cl",
   "version": "1.0.0",
-  "description": "Gatsby example site demonstrating how to use TypeScript with Gatsby",
-  "author": "fabien0102 <fabien0102@gmail.com>",
+  "description": "Portafolio de Álvaro Göede",
+  "author": "alvaaz <alvaro@goede.cl>",
   "license": "MIT",
   "scripts": {
     "start": "npm run develop",
     "develop": "cross-env NODE_OPTIONS=\"-r esm\" gatsby develop",
     "build": "cross-env NODE_OPTIONS=\"-r esm\" gatsby build",
+    "serve": "cross-env NODE_OPTIONS=\"-r esm\" gatsby serve",
     "format": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --ext ts,tsx"
