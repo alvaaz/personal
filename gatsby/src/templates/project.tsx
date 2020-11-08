@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-// import { ProjectProps } from '../types'
 import Img, { FluidObject } from 'gatsby-image'
 import { ThemeContext } from '../components/ThemeProvider'
 
@@ -101,41 +100,6 @@ export default function SingleProjectPage({ data }: { data: ProjectProps }) {
             <div className="table-custom__content">{project.table.duration}</div>
           </div>
         </div>
-
-        {/* <table className="table-auto col-start-2 col-end-9 text-red text-left">
-          <thead>
-            <tr>
-              <th className="px-4 py-2 border-solid border border-red uppercase font-extrabold text-xl tracking-wider">
-                Rol
-              </th>
-              <th className="px-4 py-2 border-solid border border-red uppercase font-extrabold text-xl tracking-wider">
-                Colaboradores
-              </th>
-              <th className="px-4 py-2 border-solid border border-red uppercase font-extrabold text-xl tracking-wider">
-                Año
-              </th>
-              <th className="px-4 py-2 border-solid border border-red uppercase font-extrabold text-xl tracking-wider">
-                Duración
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="border-solid border border-red px-4 py-2 tracking-wider text-xl">
-                {project.table.role}
-              </td>
-              <td className="border-solid border border-red px-4 py-2 tracking-wider text-xl">
-                {project.table.contributors}
-              </td>
-              <td className="border-solid border border-red px-4 py-2 tracking-wider text-xl">
-                {project.table.year}
-              </td>
-              <td className="border-solid border border-red px-4 py-2 tracking-wider text-xl">
-                {project.table.duration}
-              </td>
-            </tr>
-          </tbody>
-        </table> */}
       </div>
       <div
         className="bg-red-lighter grid gap-8 grid-cols-8 sm:grid-cols-12 mx-auto  px-8 sm:px-16 md:px-24 lg:px-32 xl:px-64 pt-20"

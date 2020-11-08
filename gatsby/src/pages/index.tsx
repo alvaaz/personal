@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby'
 import { ProjectsProps } from '../types'
 import { ProjectsList } from '../components/ProjectsList'
 import { ThemeContext } from '../components/ThemeProvider'
-import SEO from '../components/seo'
+import SEO from '../components/SEO'
 
 export default function HomePage({ data }: { data: ProjectsProps }) {
   const { darkMode, toggleDarkMode } = React.useContext(ThemeContext)
