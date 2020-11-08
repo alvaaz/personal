@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby'
 import { ProjectsProps } from '../types'
 import { ProjectsList } from '../components/ProjectsList'
 import { ThemeContext } from '../components/ThemeProvider'
+import SEO from '../components/seo'
 
 export default function HomePage({ data }: { data: ProjectsProps }) {
   const { darkMode, toggleDarkMode } = React.useContext(ThemeContext)
@@ -16,6 +17,7 @@ export default function HomePage({ data }: { data: ProjectsProps }) {
   const projects = data.projects.nodes
   return (
     <>
+      <SEO title="👋Hi" />
       <header className="bg-red-lighter mb-24 pb-32 px-8 sm:px-16 md:px-24 lg:px-32 xl:px-64 grid gap-4 sm:gap-8 grid-cols-8 sm:grid-cols-12 mx-auto">
         <h1 className="text-4xl leading-tight sm:text-6xl sm:leading-none mb-16 sm:mb-24 col-span-8 sm:col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-8">
           <span className="font-semibold block">Diseñador de productos digitales </span> viviendo en

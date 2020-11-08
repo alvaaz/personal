@@ -4,13 +4,12 @@ dotenv.config({ path: '.env' })
 
 export default {
   siteMetadata: {
-    title: `Álvaro Goede's Portfolio`,
-    siteUrl: 'https://goede.cl',
-    description: 'My portfolio',
-    author: '@alvaaz',
-    twitter: '@alvaaz'
+    title: `Álvaro — Digital Product Designer based in Viña del Mar.`,
+    description: `Hi! I am Álvaro Goede. I am a remote designer with a can-do attitude.`,
+    twitter: `@alvaaz`
   },
   plugins: [
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-plugin-prefetch-google-fonts',
