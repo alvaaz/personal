@@ -23,7 +23,7 @@ export default function SEO({ children, description, title }: Props) {
     <Helmet titleTemplate={`%s - ${site.siteMetadata.title}`}>
       <html lang="en" />
       {/* Fav Icons */}
-      <link rel="icon" type="image/svg+xml" href="/favico n.svg" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <link rel="alternate icon" href="/favicon.ico" />
       {/* Meta Tags */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
