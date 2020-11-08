@@ -171,14 +171,14 @@ export const query = graphql`
         title
         image1 {
           asset {
-            fluid(maxWidth: 400) {
+            fluid(maxWidth: 800) {
               ...GatsbySanityImageFluid
             }
           }
         }
         image2 {
           asset {
-            fluid(maxWidth: 400) {
+            fluid(maxWidth: 800) {
               ...GatsbySanityImageFluid
             }
           }
@@ -193,7 +193,7 @@ export const query = graphql`
         content
         image1 {
           asset {
-            fluid(maxWidth: 400) {
+            fluid(maxWidth: 800) {
               ...GatsbySanityImageFluid
             }
           }
