@@ -2,11 +2,18 @@ import dotenv from 'dotenv'
 
 dotenv.config({ path: '.env' })
 
-export default {
+module.exports = {
   siteMetadata: {
     title: `Álvaro — Digital Product Designer based in Viña del Mar.`,
     description: `Hi! I am Álvaro Goede. I am a remote designer with a can-do attitude.`,
-    twitter: `@alvaaz`
+    twitter: `@alvaaz`,
+    email: `alvaro@goede.cl`,
+    social: {
+      dribbble: `alvaaz`,
+      behance: `alvaaz`,
+      instagram: `alvaaz`,
+      github: `alvaaz`
+    }
   },
   plugins: [
     'gatsby-plugin-react-helmet',
