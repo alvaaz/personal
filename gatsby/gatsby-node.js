@@ -1,4 +1,6 @@
 import path from 'path'
+import fetch from 'isomorphic-fetch'
+import { createRemoteFileNode } from 'gatsby-source-filesystem'
 
 async function turnProjectsIntoPages({ graphql, actions }) {
   // 1. Get a template for this page
@@ -27,6 +29,52 @@ async function turnProjectsIntoPages({ graphql, actions }) {
       }
     })
   })
+}
+
+async function fetchVideosAndTurnIntoNodes({ actions, createContentDigest }) {
+  const res = await fetch(
+    'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLUweiC3IeIEoaer4XlQAl8alwcGCqdHce&maxResults=4&key=AIzaSyCwNIIfhyWot7OUsSLjMtnwf2tP4_lceDA'
+  )
+  const { items } = await res.json()
+
+  for (const item of items) {
+    const nodeMeta = {
+      id: item.id,
+      parent: null,
+      children: [],
+      internal: {
+        type: 'Video',
+        mediaType: 'application/json',
+        contentDigest: createContentDigest(item)
+      }
+    }
+    actions.createNode({
+      ...item,
+      ...nodeMeta
+    })
+  }
+}
+
+export async function onCreateNode({ node, actions: { createNode }, getCache, createNodeId }) {
+  if (node.internal.type === 'Video') {
+    const fileNode = await createRemoteFileNode({
+      url: node.snippet.thumbnails.high.url,
+      getCache,
+      createNode,
+      createNodeId,
+      parentNodeId: node.id
+    })
+
+    if (fileNode) {
+      // link the File node to Image node at field image
+      // eslint-disable-next-line
+      node.image___NODE = fileNode.id
+    }
+  }
+}
+
+export async function sourceNodes(params) {
+  await Promise.all([fetchVideosAndTurnIntoNodes(params)])
 }
 
 export async function createPages(params) {

@@ -19,14 +19,9 @@ export default {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-postcss',
     {
-      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: [
-          {
-            family: 'Darker Grotesque',
-            variants: ['400', '500', '600', '700']
-          }
-        ]
+        fonts: ['Darker Grotesque:400,500,600,700']
       }
     },
     {
@@ -37,6 +32,8 @@ export default {
         watchMode: true,
         token: process.env.SANITY_TOKEN
       }
-    }
+    },
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp'
   ]
 }

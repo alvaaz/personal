@@ -51,7 +51,7 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   column-gap: 4rem;
   grid-auto-rows: 300px auto auto;
-  margin-bottom: 8rem;
+  margin-bottom: 1rem;
 }
 
 .article {

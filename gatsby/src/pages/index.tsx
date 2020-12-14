@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Img, { FluidObject } from 'gatsby-image'
 import { graphql, Link } from 'gatsby'
 import { ProjectsProps } from '../types'
 import { ProjectsList } from '../components/ProjectsList'
@@ -15,6 +16,9 @@ export default function HomePage({ data }: { data: ProjectsProps }) {
   }
 
   const projects = data.projects.nodes
+  const videos = data.videos.nodes
+
+  console.log(data)
   return (
     <>
       <SEO title="👋" />
@@ -29,7 +33,7 @@ export default function HomePage({ data }: { data: ProjectsProps }) {
           Background
         </p>
         <p className="text-2xl sm:text-3xl font-regular leading-tight col-start-2 col-end-9 sm:col-end-10 mb-4">
-          👋 Soy Álvaro Göede.Durante 4 años he trabajado en la creación de interfaces gráficas,
+          👋 Soy Álvaro Göede. Durante 4 años he trabajado en la creación de interfaces gráficas,
           sistemas de diseño, estudios de usuario y estrategias de producto para grandes compañías y
           start-ups del área tecnológica, minería y finanzas. En los últimos dos años, me he
           especializado en React, Styled-Components, NextJS y Typescript con la finalidad de ampliar
@@ -46,7 +50,7 @@ export default function HomePage({ data }: { data: ProjectsProps }) {
         <p className="text-2xl sm:text-3xl font-regular leading-tight col-start-2 col-end-9 sm:col-end-10 mb-4">
           Actualmente estoy enfocado en unir las áreas de diseño, desarrollo y estrategias que
           ayudan a las empresas a lanzar productos asombrosos. Disfruto compartir mi conocimiento y
-          habilidades con mi equipo para que todos tengamos la oportunidad de crecer juntos.
+          habilidades con mi equipo, para que todos tengamos la oportunidad de crecer juntos.
         </p>
         <p className="text-2xl sm:text-3xl font-regular leading-tight col-start-2 col-end-9 sm:col-end-10 mb-16">
           Finalmente, he apoyado diversos proyectos de diseño para empresas como Ripley, Montt
@@ -61,9 +65,36 @@ export default function HomePage({ data }: { data: ProjectsProps }) {
           Algunos proyectos que he realizado.
         </p>
         <ProjectsList projects={projects} />
-        <Link className="button-primary" to="/work">
+        <Link className="button-primary" style={{ marginBottom: '8rem' }} to="/work">
           Ver todos los trabajos
         </Link>
+        <h2 className="font-extrabold text-3xl sm:text-5xl leading-none col-start-1 col-end-8 text-red mb-8">
+          Últimos videos en Youtube
+        </h2>
+        <div className="articles col-start-1 col-end-9 sm:col-end-13">
+          {videos.map((video) => (
+            <a
+              className="article"
+              key={video.snippet.resourceId.videoId}
+              href={`https://www.youtube.com/watch?v=${video.snippet.resourceId.videoId}`}
+            >
+              <Img
+                className="article__poster"
+                fluid={video.image.childImageSharp.fluid as FluidObject}
+                alt={video.snippet.title}
+              />
+              <h2 className="font-bold text-3xl border-b-2 border-solid border-transparent inline-block mb-16 sm:text-3xl">
+                {video.snippet.title}
+              </h2>
+            </a>
+          ))}
+        </div>
+        <a
+          className="button-primary"
+          href="https://www.youtube.com/channel/UCvMg7whAhSHpoL04E96fe5Q?view_as=subscriber"
+        >
+          Ir al canal en Youtube
+        </a>
       </main>
     </>
   )
@@ -84,6 +115,28 @@ export const query = graphql`
           asset {
             fluid(maxWidth: 400) {
               ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
+    }
+    videos: allVideo {
+      nodes {
+        snippet {
+          title
+          resourceId {
+            videoId
+          }
+          thumbnails {
+            high {
+              url
+            }
+          }
+        }
+        image {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
             }
           }
         }
