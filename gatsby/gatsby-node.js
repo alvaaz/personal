@@ -33,7 +33,7 @@ async function turnProjectsIntoPages({ graphql, actions }) {
 
 async function fetchVideosAndTurnIntoNodes({ actions, createContentDigest }) {
   const res = await fetch(
-    'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLUweiC3IeIEoaer4XlQAl8alwcGCqdHce&maxResults=4&key=AIzaSyCwNIIfhyWot7OUsSLjMtnwf2tP4_lceDA'
+    `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLUweiC3IeIEoaer4XlQAl8alwcGCqdHce&maxResults=4&key=${process.env.YOUTUBE_KEY}`
   )
   const { items } = await res.json()
 
