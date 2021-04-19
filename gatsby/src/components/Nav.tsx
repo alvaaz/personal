@@ -17,9 +17,16 @@ export default function Nav() {
       <Link
         to="/work"
         activeClassName="border-white"
-        className="text-xl sm:text-2xl font-semibold text-white z-10 border-b-2 border-solid border-transparent hover:border-white"
+        className="text-xl sm:text-2xl font-semibold text-white z-10 border-b-2 border-solid border-transparent hover:border-white mr-8"
       >
         Portafolio
+      </Link>
+      <Link
+        to="/blog"
+        activeClassName="border-white"
+        className="text-xl sm:text-2xl font-semibold text-white z-10 border-b-2 border-solid border-transparent hover:border-white"
+      >
+        Blog
       </Link>
     </nav>
   )

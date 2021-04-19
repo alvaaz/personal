@@ -1,70 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img, { FluidObject } from 'gatsby-image'
+import SanityImage from 'gatsby-plugin-sanity-image'
 import { ThemeContext } from '../components/ThemeProvider'
 import SEO from '../components/SEO'
+import { ProjectProps2 } from '../types'
 
-type ProjectProps = {
-  project: {
-    title: string
-    excerpt: string
-    categories: {
-      name: string
-    }[]
-    table: {
-      contributors: string
-      duration: string
-      role: string
-      year: number
-    }
-    section1: {
-      content: string
-      title: string
-      image1: {
-        asset: {
-          fluid: {
-            src: string
-          }
-        }
-      }
-      image2: {
-        asset: {
-          fluid: {
-            src: string
-          }
-        }
-      }
-    }
-    section2: {
-      content: string
-      title: string
-      quote: string
-    }
-    section3: {
-      content: string
-      title: string
-      image1: {
-        asset: {
-          fluid: {
-            src: string
-          }
-        }
-      }
-    }
-    slug: {
-      current: string
-    }
-    poster: {
-      asset: {
-        fluid: {
-          src: string
-        }
-      }
-    }
-  }
-}
-
-export default function SingleProjectPage({ data }: { data: ProjectProps }) {
+export default function SingleProjectPage({ data }: { data: ProjectProps2 }) {
   const { project } = data
   const { darkMode, toggleDarkMode } = React.useContext(ThemeContext)
   if (darkMode) {
@@ -113,15 +54,15 @@ export default function SingleProjectPage({ data }: { data: ProjectProps }) {
         <p className="col-start-2 col-end-9 leading-tight text-2xl mb-8">
           {project.section1.content}
         </p>
-        <Img
+        <SanityImage
+          {...project.section1.image1}
           className="col-start-1 col-end-9 sm:col-start-2 sm:col-end-6"
           style={{ height: 'min-content' }}
-          fluid={project.section1.image1.asset.fluid as FluidObject}
           alt={project.section1.title}
         />
-        <Img
+        <SanityImage
+          {...project.section1.image2}
           className="col-start-1 col-end-9 sm:col-start-6 sm:col-end-13"
-          fluid={project.section1.image2.asset.fluid as FluidObject}
           alt={project.section1.title}
         />
       </div>
@@ -144,11 +85,11 @@ export default function SingleProjectPage({ data }: { data: ProjectProps }) {
         <p className="col-start-2 col-end-9 sm:col-end-7 leading-tight text-2xl mb-8">
           {project.section3.content}
         </p>
-        <Img
+        {/* <Img
           className="col-start-2 col-end-9 sm:col-start-7 sm:col-end-13"
           fluid={project.section3.image1.asset.fluid as FluidObject}
           alt={project.section3.title}
-        />
+        /> */}
       </div>
     </>
   )
@@ -172,18 +113,10 @@ export const query = graphql`
         content
         title
         image1 {
-          asset {
-            fluid(maxWidth: 800) {
-              ...GatsbySanityImageFluid
-            }
-          }
+          ...ImageWithPreview
         }
         image2 {
-          asset {
-            fluid(maxWidth: 800) {
-              ...GatsbySanityImageFluid
-            }
-          }
+          ...ImageWithPreview
         }
       }
       section2 {
@@ -193,14 +126,62 @@ export const query = graphql`
       section3 {
         title
         content
-        image1 {
-          asset {
-            fluid(maxWidth: 800) {
-              ...GatsbySanityImageFluid
-            }
-          }
-        }
       }
     }
   }
 `
+
+// export const query = graphql`
+//   query($slug: String!) {
+//     project: sanityProject(slug: { current: { eq: $slug } }) {
+//       title
+//       excerpt
+//       categories {
+//         name
+//       }
+//       table {
+//         contributors
+//         duration
+//         role
+//         year
+//       }
+//       section1 {
+//         content
+//         title
+//         """
+//         image1 {
+//           asset {
+//             fluid(maxWidth: 800) {
+//               ...GatsbySanityImageFluid
+//             }
+//           }
+//         }
+//         image2 {
+//           asset {
+//             fluid(maxWidth: 800) {
+//               ...GatsbySanityImageFluid
+//             }
+//           }
+//         }
+//         """
+//       }
+//       section2 {
+//         title
+//         content
+//       }
+//       section3 {
+//         title
+//         content
+//         """
+//         image1 {
+//           asset {
+//             fluid(maxWidth: 800) {
+//               ...GatsbySanityImageFluid
+//             }
+//           }
+//         }
+//         """
+//       }
+//     }
+//   }
+// `

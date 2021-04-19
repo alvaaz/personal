@@ -8,7 +8,7 @@ module.exports = {
       colors: {
         red: {
           lighter: '#f5e3d7',
-          default: '#ae3433',
+          DEFAULT: '#ae3433',
           dark: '#951B1A'
         }
       },
@@ -20,3 +20,4 @@ module.exports = {
   variants: {},
   plugins: []
 }
+

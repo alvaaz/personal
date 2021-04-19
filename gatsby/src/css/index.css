@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 html {
-  @apply .overflow-x-hidden;
+  @apply overflow-x-hidden;
   position: relative;
 }
 
 body {
-  @apply .font-sans;
-  @apply .overflow-x-hidden;
+  @apply font-sans;
+  @apply overflow-x-hidden;
   position: relative;
 }
 
 .slider {
-  @apply .flex .flex-col .flex-wrap .items-center .py-16;
+  @apply flex flex-col flex-wrap items-center py-16;
 }
 
 .circle {
@@ -22,7 +22,7 @@ body {
   height: 150vw;
   top: -80vw;
   right: -110vw;
-  @apply .absolute .bg-red .rounded-full;
+  @apply absolute bg-red rounded-full;
 }
 
 .quote {
@@ -33,16 +33,16 @@ body {
     z-index: -1;
     right: -6vw;
     top: -12vw;
-    @apply .absolute .bg-red .rounded-full;
+    @apply absolute bg-red rounded-full;
   }
   height: 80vw;
 }
 
 .button-primary {
-  @apply .bg-red .text-white .font-bold .py-4 .px-4 .tracking-widest .uppercase .col-start-2;
+  @apply bg-red text-white font-bold py-4 px-4 tracking-widest uppercase col-start-2;
   width: max-content;
   &:hover {
-    @apply .bg-red-dark;
+    @apply bg-red-dark;
   }
 }
 
@@ -62,15 +62,15 @@ body {
   grid-template-rows: var(--rows, subgrid);
   grid-row: span 3;
   &__title {
-    @apply .font-bold .text-5xl .border-b-2 .border-solid .border-transparent .inline-block .mb-16;
+    @apply font-bold text-5xl border-b-2 border-solid border-transparent inline-block mb-16;
     width: max-content;
   }
   &__poster {
-    @apply .mb-4;
+    @apply mb-4;
   }
   &:hover {
     .article__title {
-      @apply .border-red;
+      @apply border-red-dark;
     }
   }
 }
@@ -89,12 +89,12 @@ body {
   &__title {
     width: 100%;
     margin-top: -1px;
-    @apply .px-4 .py-2 .border-solid .border .border-red .uppercase .font-extrabold .text-xl .tracking-wider;
+    @apply px-4 py-2 border-solid border border-red-dark uppercase font-extrabold text-xl tracking-wider;
   }
   &__content {
     width: 100%;
     margin-top: -1px;
-    @apply .border-solid .border .border-red .px-4 .py-2 .tracking-wider .text-xl;
+    @apply border-solid border border-red-dark px-4 py-2 tracking-wider text-xl;
   }
 }
 

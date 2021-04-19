@@ -16,8 +16,17 @@ export default {
     }
   },
   plugins: [
+    'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-postcss',
+    {
+      resolve: "gatsby-plugin-sanity-image",
+      options: {
+        projectId: "9rsnrqrb",
+        dataset: "production",
+        graphqlTag: 'develop',
+      },
+    },
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
@@ -30,7 +39,8 @@ export default {
         projectId: '9rsnrqrb',
         dataset: 'production',
         watchMode: true,
-        token: process.env.SANITY_TOKEN
+        token: process.env.SANITY_TOKEN,
+        graphqlTag: 'develop',
       }
     },
     'gatsby-plugin-sharp',

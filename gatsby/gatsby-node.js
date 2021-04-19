@@ -31,6 +31,35 @@ async function turnProjectsIntoPages({ graphql, actions }) {
   })
 }
 
+async function turnPostsIntoPages({ graphql, actions }) {
+  // 1. Get a template for this page
+  const postTemplate = path.resolve('./src/templates/post.tsx')
+  // 2. Query all projects
+  const { data } = await graphql(`
+    query {
+      posts: allSanityPost {
+        nodes {
+          title
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `)
+  // 3. Loop over each project and create a page for that project
+  data.posts.nodes.forEach((post) => {
+    actions.createPage({
+      // What is the URL for this new page??
+      path: `blog/${post.slug.current}`,
+      component: postTemplate,
+      context: {
+        slug: post.slug.current
+      }
+    })
+  })
+}
+
 async function fetchVideosAndTurnIntoNodes({ actions, createContentDigest }) {
   const res = await fetch(
     `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLUweiC3IeIEoaer4XlQAl8alwcGCqdHce&maxResults=4&key=${process.env.YOUTUBE_KEY}`
@@ -80,7 +109,7 @@ export async function sourceNodes(params) {
 export async function createPages(params) {
   // Create pages dynamically
   // Wait for all promises to be resolved before finishing this function
-  await Promise.all([turnProjectsIntoPages(params)])
+  await Promise.all([turnProjectsIntoPages(params), turnPostsIntoPages(params)])
   // 1. Projecs
   // 2. Categories
 }

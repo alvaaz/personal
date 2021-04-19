@@ -41,11 +41,7 @@ export const query = graphql`
           current
         }
         poster {
-          asset {
-            fluid(maxWidth: 400) {
-              ...GatsbySanityImageFluid
-            }
-          }
+          ...ImageWithPreview
         }
       }
     }

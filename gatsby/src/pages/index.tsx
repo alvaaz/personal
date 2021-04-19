@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Img, { FluidObject } from 'gatsby-image'
+import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { graphql, Link } from 'gatsby'
 import { ProjectsProps } from '../types'
 import { ProjectsList } from '../components/ProjectsList'
@@ -14,11 +14,9 @@ export default function HomePage({ data }: { data: ProjectsProps }) {
       toggleDarkMode()
     }, [])
   }
-
   const projects = data.projects.nodes
   const videos = data.videos.nodes
 
-  console.log(data)
   return (
     <>
       <SEO title="👋" />
@@ -72,29 +70,43 @@ export default function HomePage({ data }: { data: ProjectsProps }) {
           Últimos videos en Youtube
         </h2>
         <div className="articles col-start-1 col-end-9 sm:col-end-13">
-          {videos.map((video) => (
-            <a
-              className="article"
-              key={video.snippet.resourceId.videoId}
-              href={`https://www.youtube.com/watch?v=${video.snippet.resourceId.videoId}`}
-            >
-              <Img
-                className="article__poster"
-                fluid={video.image.childImageSharp.fluid as FluidObject}
-                alt={video.snippet.title}
-              />
-              <h2 className="font-bold text-3xl border-b-2 border-solid border-transparent inline-block mb-16 sm:text-3xl">
-                {video.snippet.title}
-              </h2>
-            </a>
-          ))}
+          {videos.map((video) => {
+            const image = getImage(video.image)
+            return (
+              <a
+                className="article"
+                key={video.snippet.resourceId.videoId}
+                href={`https://www.youtube.com/watch?v=${video.snippet.resourceId.videoId}`}
+              >
+                <GatsbyImage
+                  className="article__poster"
+                  image={image as IGatsbyImageData}
+                  alt={video.snippet.title}
+                />
+                <h2 className="font-bold text-3xl border-b-2 border-solid border-transparent inline-block mb-16 sm:text-3xl">
+                  {video.snippet.title}
+                </h2>
+              </a>
+            )
+          })}
         </div>
         <a
-          className="button-primary"
+          className="button-primary mb-32"
           href="https://www.youtube.com/channel/UCvMg7whAhSHpoL04E96fe5Q?view_as=subscriber"
         >
           Ir al canal en Youtube
         </a>
+        <h2 className="font-extrabold text-3xl sm:text-5xl leading-none col-start-1 col-end-8 text-red mb-8">
+          Últimos artículos del blog
+        </h2>
+        <Link className="button-primary" to="/blog">
+          Ver todos los artículos
+        </Link>
+        <div className="articles col-start-1 col-end-9 sm:col-end-13">
+          <h2 className="font-bold text-3xl border-b-2 border-solid border-transparent inline-block mb-16 sm:text-3xl">
+            Título
+          </h2>
+        </div>
       </main>
     </>
   )
@@ -112,11 +124,7 @@ export const query = graphql`
           current
         }
         poster {
-          asset {
-            fluid(maxWidth: 400) {
-              ...GatsbySanityImageFluid
-            }
-          }
+          ...ImageWithPreview
         }
       }
     }
@@ -135,10 +143,17 @@ export const query = graphql`
         }
         image {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 200)
           }
+        }
+      }
+    }
+    articles: allSanityPost {
+      nodes {
+        publishedAt(fromNow: true)
+        title
+        slug {
+          current
         }
       }
     }
