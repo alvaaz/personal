@@ -42,10 +42,9 @@ export default function HomePage({ data }: { data: ProjectsProps }) {
           MongoDB.
         </p>
         <p className="text-2xl sm:text-3xl font-regular leading-tight col-start-2 col-end-9 sm:col-end-10 mb-4">
-          Me desempeño como diseñador de productos en una plataforma de seguros generales para
-          LATAM. Mi principal responsabilidad es supervisar el diseño del producto y el desarrollo
-          del sistema de diseño. Dirijo junto al equipo de desarrollo la mejor manera de abordar los
-          requerimientos.
+          Actualmente integro el equipo de Merchant como diseñador de interfaces en Cornershop by Uber
+          aplicando mejoras en la aplicación que utilizan nuestros clientes para manejar su catálogo, tiendas, reportes entre otros. 
+          Mi principal responsabilidad es implementar mejoras siguiendo los lineamientos de nuestro sistema de diseño.
         </p>
         <p className="text-2xl sm:text-3xl font-regular leading-tight col-start-2 col-end-9 sm:col-end-10 mb-4">
           Actualmente estoy enfocado en unir las áreas de diseño, desarrollo y estrategias que
@@ -54,7 +53,7 @@ export default function HomePage({ data }: { data: ProjectsProps }) {
         </p>
         <p className="text-2xl sm:text-3xl font-regular leading-tight col-start-2 col-end-9 sm:col-end-10 mb-16">
           Finalmente, he apoyado diversos proyectos de diseño para empresas como Ripley, Montt
-          Group, I-Med, GapJumpers y Autentia.
+          Group, I-Med, GapJumpers, Autentia y Cornershop by Uber.
         </p>
       </header>
       <main className="px-8 sm:px-16 md:px-24 lg:px-32 xl:px-64 mb-56 grid gap-4 sm:gap-8 grid-cols-8 sm:grid-cols-12 mx-auto">
